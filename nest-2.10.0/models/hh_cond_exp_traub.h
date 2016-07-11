@@ -95,6 +95,8 @@ Parameters:
   //test parameters
   tau_m      double - Membrane time constant in ms.
   t_ref      double - Duration of refractory period in ms.
+  I_Na       double - Current sodium
+  I_K        double - Current potassium
   //
 
 References:
@@ -223,6 +225,8 @@ public:
     double_t TauR_; /** Refractory period in ms. */
     double_t y1_in_;
     double_t y2_in_;
+    mutable double_t I_Na_;
+    mutable double_t I_K_;
     //end test block
 
     double y_[ STATE_VEC_SIZE ]; //!< neuron state, must be C-array for GSL solver
@@ -324,6 +328,18 @@ public:
   }
 
   //test block
+
+  double_t
+  get_I_Na_() const
+  {
+    return S_.I_Na_;
+  }
+  double_t
+  get_I_K_() const
+  {
+    return S_.I_K_;
+  }
+
   double_t
   get_input_currents_ex_() const
   {
