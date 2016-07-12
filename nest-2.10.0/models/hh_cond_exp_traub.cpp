@@ -65,10 +65,6 @@ RecordablesMap< hh_cond_exp_traub >::create()
   insert_( names::Inact_n, &hh_cond_exp_traub::get_y_elem_< hh_cond_exp_traub::State_::HH_N > );
 
   //test
-  insert_( names::input_currents_ex, &hh_cond_exp_traub::get_input_currents_ex_ );
-  insert_( names::input_currents_in, &hh_cond_exp_traub::get_input_currents_in_ );
-  insert_( names::weighted_spikes_ex, &hh_cond_exp_traub::get_weighted_spikes_ex_ );
-  insert_( names::weighted_spikes_in, &hh_cond_exp_traub::get_weighted_spikes_in_ );
   insert_( Name( "I_Na" ), &hh_cond_exp_traub::get_I_Na_ );
   insert_( Name( "I_K" ), &hh_cond_exp_traub::get_I_K_);
 }
@@ -145,17 +141,11 @@ nest::hh_cond_exp_traub::Parameters_::Parameters_()
   , tau_synE( 5.0 )  // Synaptic Time Constant Excitatory Synapse (ms)
   , tau_synI( 10.0 ) // Synaptic Time Constant Excitatory Synapse (ms)
   , I_e( 0.0 )       // Stimulus Current (pA)
-  , Tau_( 10.0 )     // ms (test)
-  , TauR_( 2.0 )     // ms (test)
 {
 }
 
 nest::hh_cond_exp_traub::State_::State_( const Parameters_& p )
-  : y1_ex_( 0.0 )
-  , y2_ex_( 0.0 )
-  , y1_in_( 0.0 )
-  , y2_in_( 0.0 )
-  , I_Na_( 0.0 )
+  : I_Na_( 0.0 )
   , I_K_( 0.0 )
   , r_( 0 )
 {
@@ -219,10 +209,6 @@ nest::hh_cond_exp_traub::Parameters_::get( DictionaryDatum& d ) const
   def< double_t >( d, names::tau_syn_ex, tau_synE );
   def< double_t >( d, names::tau_syn_in, tau_synI );
   def< double_t >( d, names::I_e, I_e );
-
-  //test
-  def< double_t >( d, names::tau_m, Tau_ );
-  def< double_t >( d, names::t_ref, TauR_ );
 }
 
 void
@@ -242,22 +228,11 @@ nest::hh_cond_exp_traub::Parameters_::set( const DictionaryDatum& d )
   updateValue< double_t >( d, names::tau_syn_in, tau_synI );
   updateValue< double_t >( d, names::I_e, I_e );
 
-  //test
-  updateValue< double_t >( d, names::tau_m, Tau_ );
-  updateValue< double_t >( d, names::t_ref, TauR_ );
-
   if ( C_m <= 0 )
     throw BadProperty( "Capacitance must be strictly positive." );
 
   if ( tau_synE <= 0 || tau_synI <= 0 )
     throw BadProperty( "All time constants must be strictly positive." );
-
-  //test
-  if ( Tau_ <= 0.0 )
-    throw BadProperty( "Membrane time constant must be > 0." );
-
-  if ( TauR_ < 0.0 )
-    throw BadProperty( "The refractory time t_ref can't be negative.");
 }
 
 void
@@ -384,30 +359,7 @@ void
 nest::hh_cond_exp_traub::calibrate()
 {
   B_.logger_.init(); // ensures initialization in case mm connected after Simulate
-
   V_.U_old_ = S_.y_[ State_::V_M ];
-
-  //test block
-  const double h = Time::get_resolution().get_ms();
-
-  V_.P11_ex_ = V_.P22_ex_ = std::exp( -h / P_.tau_synE );
-  V_.P11_in_ = V_.P22_in_ = std::exp( -h / P_.tau_synI );
-  V_.P33_ = std::exp( -h / P_.Tau_ );
-
-  V_.expm1_tau_m_ = numerics::expm1( -h / P_.Tau_ );
-
-  V_.P30_ = -P_.Tau_ / P_.C_m * numerics::expm1( -h / P_.Tau_ );
-  V_.P21_ex_ = h * V_.P11_ex_;
-  V_.P21_in_ = h * V_.P11_in_;
-  V_.P31_ex_ = propagator_31( P_.tau_synE, P_.Tau_, P_.C_m, h );
-  V_.P32_ex_ = propagator_32( P_.tau_synE, P_.Tau_, P_.C_m, h );
-  V_.P31_in_ = propagator_31( P_.tau_synI, P_.Tau_, P_.C_m, h );
-  V_.P32_in_ = propagator_32( P_.tau_synI, P_.Tau_, P_.C_m, h );
-
-  V_.EPSCInitialValue_ = 1.0 * numerics::e / P_.tau_synE;
-  V_.IPSCInitialValue_ = 1.0 * numerics::e / P_.tau_synI;
-  //end test block
-
   V_.RefractoryCounts_ = 20;
 }
 
@@ -451,23 +403,6 @@ nest::hh_cond_exp_traub::update( Time const& origin, const long_t from, const lo
     if ( S_.r_ )
     {
       --S_.r_;
-
-    S_.y2_ex_ = V_.P21_ex_ * S_.y1_ex_ + V_.P22_ex_ * S_.y2_ex_;
-    S_.y1_ex_ *= V_.P11_ex_;
-
-    // Apply spikes delivered in this step; spikes arriving at T+1 have
-    // an immediate effect on the state of the neuron
-    V_.weighted_spikes_ex_ = B_.spike_exc_.get_value( lag );
-    S_.y1_ex_ += V_.EPSCInitialValue_ * V_.weighted_spikes_ex_;
-
-    // alpha shape EPSCs
-    S_.y2_in_ = V_.P21_in_ * S_.y1_in_ + V_.P22_in_ * S_.y2_in_;
-    S_.y1_in_ *= V_.P11_in_;
-
-    // Apply spikes delivered in this step; spikes arriving at T+1 have
-    // an immediate effect on the state of the neuron
-    V_.weighted_spikes_in_ = B_.spike_inh_.get_value( lag );
-    S_.y1_in_ += V_.IPSCInitialValue_ * V_.weighted_spikes_in_;
     }
     else
     {

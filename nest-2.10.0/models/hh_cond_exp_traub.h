@@ -93,8 +93,6 @@ Parameters:
  I_e        double - External input current in pA.
 
   //test parameters
-  tau_m      double - Membrane time constant in ms.
-  t_ref      double - Duration of refractory period in ms.
   I_Na       double - Current sodium
   I_K        double - Current potassium
   //
@@ -185,10 +183,6 @@ private:
     double tau_synI; //!< Synaptic Time Constant Inhibitory Synapse in ms
     double I_e;      //!< External Current in pA
 
-    //test
-    double_t Tau_;  /** Membrane time constant in ms. */
-    double_t TauR_; /** Refractory period in ms. */
-
     Parameters_();
 
     void get( DictionaryDatum& ) const; //!< Store current values in dictionary
@@ -217,14 +211,6 @@ public:
     };
 
     //test block
-    double_t y0_; //!< Constant current
-    double_t y1_ex_;
-    double_t y2_ex_;
-    //test
-    double_t Tau_;  /** Membrane time constant in ms. */
-    double_t TauR_; /** Refractory period in ms. */
-    double_t y1_in_;
-    double_t y2_in_;
     mutable double_t I_Na_;
     mutable double_t I_K_;
     //end test block
@@ -248,31 +234,7 @@ public:
    */
   struct Variables_
   {
-    //test 2 line
-    double_t EPSCInitialValue_;
-    double_t IPSCInitialValue_;
-
-
     double U_old_; // for spike-detection
-
-    //test
-    double_t P11_ex_;
-    double_t P21_ex_;
-    double_t P22_ex_;
-    double_t P31_ex_;
-    double_t P32_ex_;
-    double_t P11_in_;
-    double_t P21_in_;
-    double_t P22_in_;
-    double_t P31_in_;
-    double_t P32_in_;
-    double_t P30_;
-    double_t P33_;
-    double_t expm1_tau_m_;
-    double_t weighted_spikes_ex_;
-    double_t weighted_spikes_in_;
-    //end test
-
     int_t RefractoryCounts_;
   };
 
@@ -338,27 +300,6 @@ public:
   get_I_K_() const
   {
     return S_.I_K_;
-  }
-
-  double_t
-  get_input_currents_ex_() const
-  {
-    return S_.y1_ex_;
-  }
-  double_t
-  get_input_currents_in_() const
-  {
-    return S_.y1_in_;
-  }
-  double_t
-  get_weighted_spikes_ex_() const
-  {
-    return V_.weighted_spikes_ex_;
-  }
-  double_t
-  get_weighted_spikes_in_() const
-  {
-    return V_.weighted_spikes_in_;
   }
   //test block end
 
