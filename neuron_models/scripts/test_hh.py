@@ -48,7 +48,14 @@ g_K double - Potassium peak conductance in nS.
 
 if neuron_model == "hh_cond_exp_traub":
     n = nest.Create(neuron_model, params={'V_m': -70.0, 'E_L': -70.0, 'V_T': -63.0, 'g_L': 6.0, 'C_m': 30.0,
-                                          'tau_syn_ex': 5.0, 'tau_syn_in': 15.0, 'I_e': 0.0})
+                                          'tau_syn_ex': 5.0, 'tau_syn_in': 15.0, 'I_e': 0.0,
+                                          'E_ex': 0.0,
+                                          'E_in': -80.0,
+                                          'E_Na': 50.0,
+                                          'g_Na': 20000.0,
+                                          'E_K': -90.0,
+                                          'g_K': 6000.0
+                                          })
 else:
     n = nest.Create(neuron_model, params={'tau_syn_ex': 1.0})
 

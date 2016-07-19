@@ -95,6 +95,7 @@ Parameters:
   //test parameters
   I_Na       double - Current sodium
   I_K        double - Current potassium
+  I_Cl
   //
 
 References:
@@ -213,6 +214,7 @@ public:
     //test block
     mutable double_t I_Na_;
     mutable double_t I_K_;
+    mutable double_t I_Cl_;
     //end test block
 
     double y_[ STATE_VEC_SIZE ]; //!< neuron state, must be C-array for GSL solver
@@ -290,7 +292,6 @@ public:
   }
 
   //test block
-
   double_t
   get_I_Na_() const
   {
@@ -300,6 +301,11 @@ public:
   get_I_K_() const
   {
     return S_.I_K_;
+  }
+  double_t
+  get_I_Cl_() const
+  {
+    return S_.I_Cl_;
   }
   //test block end
 

@@ -66,7 +66,8 @@ RecordablesMap< hh_cond_exp_traub >::create()
 
   //test
   insert_( Name( "I_Na" ), &hh_cond_exp_traub::get_I_Na_ );
-  insert_( Name( "I_K" ), &hh_cond_exp_traub::get_I_K_);
+  insert_( Name( "I_K" ), &hh_cond_exp_traub::get_I_K_ );
+  insert_( Name( "I_Cl" ), &hh_cond_exp_traub::get_I_Cl_ );
 }
 
 extern "C" int
@@ -92,8 +93,9 @@ hh_cond_exp_traub_dynamics( double, const double y[], double f[], void* pnode )
     * ( y[ S::V_M ] - node.P_.E_K );
   const double I_L = node.P_.g_L * ( y[ S::V_M ] - node.P_.E_L );
 
-  node.S_.I_Na_ = -node.P_.g_Na * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_H ] * ( y[ S::V_M ] - node.P_.E_Na );
-  node.S_.I_K_ = -node.P_.g_K * y[ S::HH_N ] * y[ S::HH_N ] * y[ S::HH_N ] * y[ S::HH_N ] * ( y[ S::V_M ] - node.P_.E_K );
+  node.S_.I_Na_ = -I_Na;  //node.P_.g_Na * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_H ] * ( y[ S::V_M ] - node.P_.E_Na );
+  node.S_.I_K_ = -I_K; //-node.P_.g_K * y[ S::HH_N ] * y[ S::HH_N ] * y[ S::HH_N ] * y[ S::HH_N ] * ( y[ S::V_M ] - node.P_.E_K );
+  node.S_.I_Cl_ = -I_L; //-node.P_.g_L * ( y[ S::V_M ] - node.P_.E_L );
 
   const double I_syn_exc = y[ S::G_EXC ] * ( y[ S::V_M ] - node.P_.E_ex );
   const double I_syn_inh = y[ S::G_INH ] * ( y[ S::V_M ] - node.P_.E_in );
@@ -147,6 +149,7 @@ nest::hh_cond_exp_traub::Parameters_::Parameters_()
 nest::hh_cond_exp_traub::State_::State_( const Parameters_& p )
   : I_Na_( 0.0 )
   , I_K_( 0.0 )
+  , I_Cl_( 0.0 )
   , r_( 0 )
 {
   y_[ 0 ] = p.E_L;
@@ -170,6 +173,7 @@ nest::hh_cond_exp_traub::State_::State_( const Parameters_& p )
 nest::hh_cond_exp_traub::State_::State_( const State_& s )
   : I_Na_( s.I_Na_ )
   , I_K_( s.I_K_ )
+  , I_Cl_( s.I_Cl_ )
   , r_( s.r_ )
 {
   for ( size_t i = 0; i < STATE_VEC_SIZE; ++i )
@@ -185,6 +189,7 @@ nest::hh_cond_exp_traub::State_& nest::hh_cond_exp_traub::State_::operator=( con
     y_[ i ] = s.y_[ i ];
   I_Na_ = s.I_Na_;
   I_K_ = s.I_K_;
+  I_Cl_ = s.I_Cl_;
   r_ = s.r_;
   return *this;
 }

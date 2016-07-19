@@ -2,9 +2,7 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <content url="file://$USER_HOME$/NEST/nest210/ins/lib/python2.7/site-packages">
-      <sourceFolder url="file://$USER_HOME$/NEST/nest210/ins/lib/python2.7/site-packages" isTestSource="false" />
-    </content>
+    <content url="file://$USER_HOME$/NEST/nest210/ins origin/lib/python2.7/site-packages" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
