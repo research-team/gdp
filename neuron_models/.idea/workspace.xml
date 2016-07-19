@@ -2,12 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5139a155-9fa7-4c54-8c74-0d2c72c8f681" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/aeif_cond_alpha.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/aeif_cond_alpha_RK5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/aeif_cond_exp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/amat2_psc_exp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/hh_cond_exp_traub.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/hh_psc_alpha.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/hh_psc_alpha_gap.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_chxk_2008.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_cond_alpha.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_cond_exp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_cond_exp_sfa_rr.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_neuron.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_alpha.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_alpha_canon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_alpha_presc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_delta.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_delta_canon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_exp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_psc_exp_ps.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/iaf_tum_2000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/izhikevich.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/mat2_psc_exp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Results/pp_psc_delta.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../nest-2.10.0/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../nest-2.10.0/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../nest-2.10.0/models/hh_cond_exp_traub.cpp" afterPath="$PROJECT_DIR$/../nest-2.10.0/models/hh_cond_exp_traub.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../nest-2.10.0/models/hh_cond_exp_traub.h" afterPath="$PROJECT_DIR$/../nest-2.10.0/models/hh_cond_exp_traub.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/neuron_models.iml" afterPath="$PROJECT_DIR$/.idea/neuron_models.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/inh_test.py" afterPath="$PROJECT_DIR$/scripts/inh_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/test_hh.py" afterPath="$PROJECT_DIR$/scripts/test_hh.py" />
     </list>
     <ignored path="neuron_models.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="inh_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/inh_test.py">
+      <file leaf-file-name="test_hh.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/test_hh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="50" column="91" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
+            <state relative-caret-position="220">
+              <caret line="49" column="93" selection-start-line="49" selection-start-column="93" selection-end-line="49" selection-end-column="93" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -40,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_hh.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/test_hh.py">
+      <file leaf-file-name="inh_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/inh_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+            <state relative-caret-position="-140">
+              <caret line="50" column="91" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -55,8 +76,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="73" column="73" selection-start-line="73" selection-start-column="73" selection-end-line="73" selection-end-column="73" />
+            <state relative-caret-position="190">
+              <caret line="60" column="54" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -174,7 +195,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$USER_HOME$/NEST/nest210/ins origin/lib/python2.7/site-packages" />
+    <property name="last_opened_file_path" value="$USER_HOME$/NEST/nest210/ins/lib/python2.7/site-packages" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -183,7 +204,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.inh_test">
+  <component name="RunManager" selected="Python.test_hh">
     <configuration default="false" name="inh_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -231,6 +252,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="neuron_models" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/multimeter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test_hh" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="neuron_models" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/test_hh.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -369,16 +407,18 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.inh_test" />
       <item index="1" class="java.lang.String" itemvalue="Python.test" />
       <item index="2" class="java.lang.String" itemvalue="Python.multimeter" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test_hh" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.inh_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.multimeter" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.test_hh" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.inh_test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.multimeter" />
       </list>
     </recent_temporary>
   </component>
@@ -757,27 +797,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/multimeter.py">
+    <entry file="file://$USER_HOME$/NEST/nest210/ins/lib/python2.7/site-packages/nest/raster_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="123">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/test.py">
+    <entry file="file://$PROJECT_DIR$/scripts/inh_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="73" column="73" selection-start-line="73" selection-start-column="73" selection-end-line="73" selection-end-column="73" />
+        <state relative-caret-position="-140">
+          <caret line="50" column="91" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/inh_test.py">
+    <entry file="file://$PROJECT_DIR$/scripts/multimeter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="50" column="91" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
+        <state relative-caret-position="270">
+          <caret line="53" column="93" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="60" column="54" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -786,8 +835,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/test_hh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+        <state relative-caret-position="220">
+          <caret line="49" column="93" selection-start-line="49" selection-start-column="93" selection-end-line="49" selection-end-column="93" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

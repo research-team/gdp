@@ -95,7 +95,7 @@ Parameters:
   //test parameters
   I_Na       double - Current sodium
   I_K        double - Current potassium
-  I_Cl
+  I_Cl       double - Current chlorine
   //
 
 References:
