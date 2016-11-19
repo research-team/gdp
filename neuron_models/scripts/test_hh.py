@@ -44,26 +44,27 @@ E_Na double - Sodium reversal potential in mV.
 g_Na double - Sodium peak conductance in nS.
 E_K double - Potassium reversal potential in mV.
 g_K double - Potassium peak conductance in nS.
+
+g_ex	Excitatory synaptic conductance in nS
+g_in	Inhibitory synaptic conductance in nS
 '''
 
-if neuron_model == "hh_cond_exp_traub":
-    n = nest.Create(neuron_model, params={'V_m': -70.0, 'E_L': -70.0, 'V_T': -63.0, 'g_L': 100.0, 'C_m': 30.0,
-                                          'tau_syn_ex': 5.0, 'tau_syn_in': 15.0, 'I_e': 0.0,
-                                          'E_ex': 0.0,
-                                          'E_in': -80.0,
-                                          'E_Na': 50.0,
-                                          'g_Na': 20000.0,
-                                          'E_K': -90.0,
-                                          'g_K': 6000.0
-                                          })
-else:
-    n = nest.Create(neuron_model, params={'tau_syn_ex': 1.0})
+n = nest.Create(neuron_model, params={'V_m': -70.0, 'E_L': -70.0, 'V_T': -63.0, 'g_L': 100.0, 'C_m': 30.0,
+                                      'tau_syn_ex': 5.0, 'tau_syn_in': 15.0, 'I_e': 0.0,
+                                      'E_ex': 0.0,
+                                      'E_in': -80.0,
+                                      'E_Na': 50.0,
+                                      'g_Na': 20000.0,
+                                      'E_K': -90.0,
+                                      'g_K': 6000.0
+                                      })
 
-m = nest.Create('multimeter', params={'withtime': True, 'interval': 0.1, 'record_from': ['V_m', 'I_Na', 'I_K', 'I_Cl']})
+m = nest.Create('multimeter', params={'withtime': True, 'interval': 0.1, 'record_from': ['V_m', 'I_Na', 'I_K', 'I_Cl',
+                                                                                         'g_ex', 'g_in']})
 
 # Create spike generators and connect
 gex = nest.Create('spike_generator', params={'spike_times': np.array([1.0])})
-gin = nest.Create('spike_generator', params={'spike_times': np.array([6.0])})
+gin = nest.Create('spike_generator', params={'spike_times': np.array([5.0])})
 # gex = nest.Create('spike_generator', params={'spike_times': np.array([5.0, 10, 15])})
 # gin = nest.Create('spike_generator', params={'spike_times': np.array([15.0, 25.0, 55.0])})
 
@@ -79,14 +80,19 @@ nest.Simulate(10)
 events = nest.GetStatus(m)[0]['events']
 t = events['times']
 
-pl.subplot(211)
+pl.subplot(311)
 pl.plot(t, events['V_m'])
 pl.ylabel('Membrane potential [mV]')
 
-pl.subplot(212)
+pl.subplot(312)
 pl.plot(t, events['I_Na'], t, events['I_K'], t, events['I_Cl'])
 pl.ylabel('Currents [nA]')
 pl.legend(('I_Na', 'I_K', 'I_Cl'))
+
+pl.subplot(313)
+pl.plot(t, events['g_ex'], t, events['g_in'])
+pl.ylabel('Conductance [nS]')
+pl.legend(('g_ex', 'g_in'))
 
 nest.raster_plot.from_device(sd)
 nest.raster_plot.show()

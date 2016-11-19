@@ -93,7 +93,7 @@ hh_cond_exp_traub_dynamics( double, const double y[], double f[], void* pnode )
     * ( y[ S::V_M ] - node.P_.E_K );
   const double I_L = node.P_.g_L * ( y[ S::V_M ] - node.P_.E_L );
 
-  node.S_.I_Na_ = -I_Na;  //node.P_.g_Na * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_H ] * ( y[ S::V_M ] - node.P_.E_Na );
+  node.S_.I_Na_ = -I_Na;  //-node.P_.g_Na * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_M ] * y[ S::HH_H ] * ( y[ S::V_M ] - node.P_.E_Na );
   node.S_.I_K_ = -I_K; //-node.P_.g_K * y[ S::HH_N ] * y[ S::HH_N ] * y[ S::HH_N ] * y[ S::HH_N ] * ( y[ S::V_M ] - node.P_.E_K );
   node.S_.I_Cl_ = -I_L; //-node.P_.g_L * ( y[ S::V_M ] - node.P_.E_L );
 
